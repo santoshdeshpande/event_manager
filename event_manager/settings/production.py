@@ -1,6 +1,11 @@
 from base import *
+from os.path import abspath, basename, dirname, join, normpath
+from sys import path
 
 DEBUG = False
+STATIC_ROOT = normpath(join(SITE_ROOT, 'assets'))
+STATIC_URL = '/static/'
+
 
 ALLOWED_HOSTS = ['localhost','aw.eatsleepcode.in']
 DATABASES = {
