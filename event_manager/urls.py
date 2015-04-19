@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^api/v1/survey/$', views.SurveyList.as_view()),
     url(r'^api/v1/survey_answers/$', views.SurveyAnswersList.as_view()),
     url(r'^api/v1/meetings/$', views.MeetingList.as_view()),
+    url(r'^api/v1/request_meeting/$', views.MeetingRequestList.as_view()),
 ]

@@ -81,7 +81,7 @@ class Meeting(models.Model):
 	table_name = models.CharField(max_length = 100)
 	topic = models.TextField()
 	modified = models.DateTimeField(auto_now=True)
-
+	approved = models.BooleanField(default=True)
 
 	@property
 	def meeting_with_name(self):
@@ -97,6 +97,15 @@ class Meeting(models.Model):
 
 	class Meta:
 		ordering = ('start_time','modified',)
+
+class MeetingRequest(models.Model):
+	name = models.CharField(max_length = 100)
+	company = models.CharField(max_length = 100)
+	designation = models.CharField(max_length = 100)
+	wiproLeader = models.CharField(max_length = 100)
+	comments = models.TextField();
+
+	
 
 
 

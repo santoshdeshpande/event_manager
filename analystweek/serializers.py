@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting
+from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest
 from django.contrib.auth.models import User
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -37,4 +37,8 @@ class MeetingSerializer(serializers.ModelSerializer):
 	end_time_str = serializers.CharField()
 	class Meta:
 		model = Meeting
+
+class MeetingRequestSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = MeetingRequest
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting
-from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer
+from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest
+from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer,MeetingRequestSerializer
 
 from rest_framework import permissions
 
@@ -44,13 +44,19 @@ class SurveyList(generics.ListAPIView):
 	serializer_class = SurveySerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
-class MeetingList(generics.ListAPIView):		
+class MeetingList(generics.ListCreateAPIView):		
 	serializer_class = MeetingSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
 	def get_queryset(self):
 		user = self.request.user
-		return Meeting.objects.filter(meeting_of=user)
+		return Meeting.objects.filter(meeting_of=user).filter(approved=True)
+
+
+class MeetingRequestList(generics.ListCreateAPIView):
+	queryset = MeetingRequest.objects.all()
+	serializer_class = MeetingRequestSerializer
+	permission_classes = (permissions.IsAuthenticated,)
 
 
 class UserInfo(generics.RetrieveAPIView):
