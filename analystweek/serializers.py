@@ -1,9 +1,14 @@
 from rest_framework import serializers
 from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class UserProfileSerializer(serializers.ModelSerializer):
 	start = serializers.CharField(source='starting_field')
+	image_url = serializers.SerializerMethodField()
+
+	def get_image_url(self, obj):
+		return '%s%s' % (settings.MEDIA_URL, obj.image)
 
 	class Meta:
 		model = UserProfile

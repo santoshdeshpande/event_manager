@@ -1,6 +1,7 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from analystweek import views
+from django.conf import settings;
 
 urlpatterns = [
     # Examples:
@@ -18,3 +19,9 @@ urlpatterns = [
     url(r'^api/v1/meetings/$', views.MeetingList.as_view()),
     url(r'^api/v1/request_meeting/$', views.MeetingRequestList.as_view()),
 ]
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+	urlpatterns += patterns('',
+		(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+			'document_root': settings.MEDIA_ROOT}))
