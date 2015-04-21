@@ -26,10 +26,10 @@ class UserProfile(models.Model):
 	)
 	name = models.CharField(max_length = 255)
 	title = models.CharField(max_length = 200)
-	profile = models.TextField()
+	profile = models.TextField(blank=True,null=True)
 	userType = models.CharField(max_length = 20, choices = CHOICES, default='speaker')
 	has_profile_info = models.BooleanField(default=True)
-	image = models.ImageField(upload_to="profiles")
+	image = models.ImageField(upload_to="profiles", blank=True, null=True)
 
 	@property
 	def starting_field(self):
@@ -105,7 +105,17 @@ class MeetingRequest(models.Model):
 	wiproLeader = models.CharField(max_length = 100)
 	comments = models.TextField();
 
-	
+class Feedback(models.Model):
+	email = models.CharField(max_length = 100);
+	name = models.CharField(max_length = 200);
+	question1 = models.TextField();
+	question2 = models.TextField();
+	question3 = models.TextField();
+	question4 = models.TextField();
+	question5 = models.TextField();
+
+
+
 
 
 

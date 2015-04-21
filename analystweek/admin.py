@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile,ContactInfo,Agenda,Survey,SurveyAnswers,Meeting
+from .models import UserProfile,ContactInfo,Agenda,Survey,SurveyAnswers,Meeting,Feedback
 
 # Register your models here.
 
@@ -22,6 +22,8 @@ class SurveyAnswersAdmin(admin.ModelAdmin):
 class MeetingAdmin(admin.ModelAdmin):
 	list_display = ('meeting_with_name','table_name','topic','start_time_str','end_time_str')
 
+class FeedbackAdmin(admin.ModelAdmin):
+	list_display = ('name','email','question1','question2','question3','question4','question5')
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
@@ -30,3 +32,4 @@ admin.site.register(Agenda, AgendaAdmin)
 admin.site.register(Survey,SurveyAdmin)
 admin.site.register(SurveyAnswers,SurveyAnswersAdmin)
 admin.site.register(Meeting, MeetingAdmin)
+admin.site.register(Feedback,FeedbackAdmin)
