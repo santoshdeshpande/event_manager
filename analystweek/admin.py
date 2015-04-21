@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile,ContactInfo,Agenda,Survey,SurveyAnswers,Meeting,Feedback
+from .models import UserProfile,ContactInfo,Agenda,Survey,SurveyAnswers,Meeting,Feedback,Chat
 
 # Register your models here.
 
@@ -26,6 +26,9 @@ class FeedbackAdmin(admin.ModelAdmin):
 	list_display = ('name','email','question1','question2','question3','question4','question5')
 
 
+class ChatAdmin(admin.ModelAdmin):
+	list_display = ('name','email','message','modified')
+
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(ContactInfo, ContactInfoAdmin)
 admin.site.register(Agenda, AgendaAdmin)
@@ -33,3 +36,4 @@ admin.site.register(Survey,SurveyAdmin)
 admin.site.register(SurveyAnswers,SurveyAnswersAdmin)
 admin.site.register(Meeting, MeetingAdmin)
 admin.site.register(Feedback,FeedbackAdmin)
+admin.site.register(Chat,ChatAdmin)

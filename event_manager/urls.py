@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^api/v1/meetings/$', views.MeetingList.as_view()),
     url(r'^api/v1/request_meeting/$', views.MeetingRequestList.as_view()),
     url(r'^api/v1/feedback/$', views.FeedbackInfo.as_view()),
+    url(r'^api/v1/chat/$', views.ChatList.as_view()),
 ]
 
 if settings.DEBUG:

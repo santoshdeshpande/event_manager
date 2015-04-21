@@ -114,6 +114,15 @@ class Feedback(models.Model):
 	question4 = models.TextField();
 	question5 = models.TextField();
 
+class Chat(models.Model):
+	email = models.CharField(max_length = 100);
+	name = models.CharField(max_length = 200);
+	message = models.TextField();
+	modified = models.DateTimeField(auto_now=True);
+
+	class Meta:
+		ordering = ('modified',)	
+
 
 
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback
-from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer,MeetingRequestSerializer,FeedbackSerializer
+from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat
+from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer,MeetingRequestSerializer,FeedbackSerializer,ChatSerializer
 
 from rest_framework import permissions
 
@@ -72,6 +72,12 @@ class FeedbackInfo(generics.ListCreateAPIView):
 	queryset = Feedback.objects.all();
 	serializer_class = FeedbackSerializer
 	permission_classes = (permissions.IsAuthenticated,)
+
+class ChatList(generics.ListCreateAPIView):
+	queryset = Chat.objects.all();
+	serializer_class = ChatSerializer
+	permission_classes = (permissions.IsAuthenticated,)
+
 
 
 # Create your views here.

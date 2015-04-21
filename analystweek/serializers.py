@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback
+from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -51,3 +51,6 @@ class FeedbackSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Feedback
 
+class ChatSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Chat
