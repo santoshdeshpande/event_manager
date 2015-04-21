@@ -7,17 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('analystweek', '0002_auto_20150418_0608'),
+        ('analystweek', '0001_initial'),
     ]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='meeting',
-            options={'ordering': ('start_time', 'modified')},
-        ),
         migrations.AddField(
-            model_name='meeting',
-            name='approved',
+            model_name='customuser',
+            name='is_superuser',
             field=models.BooleanField(default=False),
         ),
     ]

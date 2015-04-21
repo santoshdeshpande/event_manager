@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat
+from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat,CustomUser
 from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer,MeetingRequestSerializer,FeedbackSerializer,ChatSerializer
 
 from rest_framework import permissions
@@ -23,8 +23,8 @@ class ContactInfoList(generics.ListCreateAPIView):
     	print "Performing create..."
 
 class UserProfileList(generics.ListAPIView):	
-	queryset = UserProfile.objects.all()
-	serializer_class = UserProfileSerializer
+	queryset = CustomUser.objects.all()
+	serializer_class = UserSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
 class AgendaList(generics.ListAPIView):	
