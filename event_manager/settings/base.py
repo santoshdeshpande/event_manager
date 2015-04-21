@@ -129,3 +129,5 @@ REST_FRAMEWORK = {
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=60 * 60 * 24 * 3),
 }
+
+AUTH_USER_MODEL = 'analystweek.CustomUser'

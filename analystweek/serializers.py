@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat
+from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat,CustomUser
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -11,7 +11,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 		return '%s%s' % (settings.MEDIA_URL, obj.image)
 
 	class Meta:
-		model = UserProfile
+		model = CustomUser
 
 class ContactInfoSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -30,9 +30,19 @@ class SurveyAnswersSerializer(serializers.ModelSerializer):
 		model = SurveyAnswers
 
 class UserSerializer(serializers.ModelSerializer):
+	start = serializers.CharField(source='starting_field')
+	image_url = serializers.SerializerMethodField()
+	name = serializers.SerializerMethodField()
+
+	def get_name(self, obj):
+		return "%s %s" % (obj.first_name, obj.last_name)
+
+	def get_image_url(self, obj):
+		return '%s%s' % (settings.MEDIA_URL, obj.image)
+
 	class Meta:
-		model = User
-		fields = ('id','first_name','last_name','email',)
+		model = CustomUser
+		fields = ('id','name','first_name','last_name','email','title','image','profile','userType','company','start','image_url')
 
 class MeetingSerializer(serializers.ModelSerializer):
 	meeting_of = UserSerializer(read_only=True)
