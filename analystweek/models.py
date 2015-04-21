@@ -121,7 +121,7 @@ class Chat(models.Model):
 	modified = models.DateTimeField(auto_now=True);
 
 	class Meta:
-		ordering = ('modified',)	
+		ordering = ('-modified',)	
 
 
 
