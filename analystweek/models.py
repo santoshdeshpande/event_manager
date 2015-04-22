@@ -224,7 +224,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 	@property
 	def starting_field(self):
-		return self.get_full_name()[0];
+		full_name = self.get_full_name();
+		start = self.email[0]
+		if(full_name != ""):
+			start = self.get_full_name()[0]
+		return start.upper()
+		
+
 
 
 	def __unicode__(self):
