@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat,CustomUser
+from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat,CustomUser,UserMeeting
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -52,6 +52,15 @@ class MeetingSerializer(serializers.ModelSerializer):
 	end_time_str = serializers.CharField()
 	class Meta:
 		model = Meeting
+
+class UserMeetingSerializer(serializers.ModelSerializer):
+	meeting_of = UserSerializer(read_only=True, many=True)
+	meeting_with = UserSerializer(read_only=True, many=True)
+	start_time_str = serializers.CharField()
+	end_time_str = serializers.CharField()
+
+	class Meta:
+		model = UserMeeting
 
 class MeetingRequestSerializer(serializers.ModelSerializer):
 	class Meta:

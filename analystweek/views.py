@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat,CustomUser
-from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer,MeetingRequestSerializer,FeedbackSerializer,ChatSerializer
+from .models import ContactInfo,UserProfile,Agenda,Survey,SurveyAnswers,Meeting,MeetingRequest,Feedback,Chat,CustomUser,UserMeeting
+from .serializers import ContactInfoSerializer, UserProfileSerializer,AgendaSerializer,SurveySerializer,UserSerializer,SurveyAnswersSerializer,MeetingSerializer,MeetingRequestSerializer,FeedbackSerializer,ChatSerializer,UserMeetingSerializer
 
 from rest_framework import permissions
 
@@ -23,7 +23,7 @@ class ContactInfoList(generics.ListCreateAPIView):
     	print "Performing create..."
 
 class UserProfileList(generics.ListAPIView):	
-	queryset = CustomUser.objects.all()
+	queryset = CustomUser.objects.filter(is_staff=False)
 	serializer_class = UserSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
@@ -45,12 +45,18 @@ class SurveyList(generics.ListAPIView):
 	permission_classes = (permissions.IsAuthenticated,)
 
 class MeetingList(generics.ListCreateAPIView):		
-	serializer_class = MeetingSerializer
+	serializer_class = UserMeetingSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
 	def get_queryset(self):
 		user = self.request.user
-		return Meeting.objects.filter(meeting_of=user).filter(approved=True)
+		host = user.host.all()
+		attendee = user.attendee.all()
+		all_meetings = []
+		all_meetings.append(host)
+		all_meetings.append(attendee)
+		meetings = [item for sublist in all_meetings for item in sublist]
+		return meetings
 
 
 class MeetingRequestList(generics.ListCreateAPIView):

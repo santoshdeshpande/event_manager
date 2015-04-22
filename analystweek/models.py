@@ -87,6 +87,27 @@ class SurveyAnswers(models.Model):
 		verbose_name = 'Survey Answer'
 		verbose_name_plural = 'Survey Answers'
 
+class UserMeeting(models.Model):
+	meeting_of = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='host')
+	meeting_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='attendee')
+	start_time = models.DateTimeField()
+	end_time = models.DateTimeField()
+	venue = models.CharField(max_length = 100)		
+	topic = models.TextField()
+	modified = models.DateTimeField(auto_now=True)
+		
+	@property
+	def start_time_str(self):
+		return self.start_time.strftime("%I:%M %p")
+
+	@property
+	def end_time_str(self):
+		return self.end_time.strftime("%I:%M %p")
+
+	class Meta:
+		ordering = ('start_time','modified',)
+
+
 class Meeting(models.Model):
 	meeting_of = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='owner')
 	meeting_with = models.ForeignKey(settings.AUTH_USER_MODEL)	

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile,ContactInfo,Agenda,Survey,SurveyAnswers,Meeting,Feedback,Chat,CustomUser
+from .models import UserProfile,ContactInfo,Agenda,Survey,SurveyAnswers,Meeting,Feedback,Chat,CustomUser,UserMeeting
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
 from .forms import CustomUserChangeForm, CustomUserCreationForm
@@ -57,13 +57,16 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
 
-
+class UserMeetingAdmin(admin.ModelAdmin):
+	filter_horizontal = ('meeting_of','meeting_with',)
+	save_as = True	
 
 admin.site.register(ContactInfo, ContactInfoAdmin)
 admin.site.register(Agenda, AgendaAdmin)
 admin.site.register(Survey,SurveyAdmin)
 admin.site.register(SurveyAnswers,SurveyAnswersAdmin)
-admin.site.register(Meeting, MeetingAdmin)
+# admin.site.register(Meeting, MeetingAdmin)
 admin.site.register(Feedback,FeedbackAdmin)
 admin.site.register(Chat,ChatAdmin)
 admin.site.register(CustomUser,CustomUserAdmin)
+admin.site.register(UserMeeting, UserMeetingAdmin)
