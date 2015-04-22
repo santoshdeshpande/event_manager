@@ -88,8 +88,8 @@ class SurveyAnswers(models.Model):
 		verbose_name_plural = 'Survey Answers'
 
 class UserMeeting(models.Model):
-	meeting_of = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='host')
-	meeting_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='attendee')
+	meeting_of = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='host',verbose_name = 'Wipro Leader')
+	meeting_with = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='attendee', verbose_name='Analyst')
 	start_time = models.DateTimeField()
 	end_time = models.DateTimeField()
 	venue = models.CharField(max_length = 100)		
@@ -198,7 +198,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 	first_name = models.CharField(max_length = 255)
 	last_name = models.CharField(max_length = 255)
 	company = models.CharField(max_length = 200)
-	title = models.CharField(max_length = 200)
+	title = models.CharField(max_length = 200,blank=True,null=True)
 	profile = models.TextField(blank=True,null=True)
 	userType = models.CharField(max_length = 20, choices = CHOICES, default='speaker')
 	has_profile_info = models.BooleanField(default=True)
