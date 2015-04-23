@@ -214,7 +214,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 	image = models.ImageField(upload_to="profiles", blank=True, null=True)
 	date_joined = models.DateTimeField(auto_now_add=True)	
 	is_active = models.BooleanField(default=True)
-	is_staff = models.BooleanField(default=False)		
+	is_staff = models.BooleanField(default=False)	
+	show_in_profile = models.BooleanField(default = True)	
 
 	class Meta:
 		verbose_name = _('user')

@@ -42,7 +42,7 @@ class CustomUserAdmin(UserAdmin):
         (_('Personal info'), {'fields': ('first_name','last_name','company')}),
         (_('Analyst info'), {'fields':('title','userType','profile','has_profile_info','image')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-                                       'groups', 'user_permissions')}),
+                                       'groups', 'user_permissions','show_in_profile')}),
         (_('Important dates'), {'fields': ('last_login',)}),
     )
     add_fieldsets = (

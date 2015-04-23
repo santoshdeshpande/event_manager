@@ -23,7 +23,7 @@ class ContactInfoList(generics.ListCreateAPIView):
     	print "Performing create..."
 
 class UserProfileList(generics.ListAPIView):	
-	queryset = CustomUser.objects.filter(is_staff=False)
+	queryset = CustomUser.objects.filter(is_staff=False).filter(show_in_profile=True)
 	serializer_class = UserSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
