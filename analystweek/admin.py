@@ -60,6 +60,7 @@ class CustomUserAdmin(UserAdmin):
 class UserMeetingAdmin(admin.ModelAdmin):
 	list_display = ('wipro_leaders','analysts','start_time','end_time','venue')
 	filter_horizontal = ('meeting_of','meeting_with',)
+	list_filter = ('meeting_of', 'start_time', 'end_time')
 	save_as = True	
 
 admin.site.register(ContactInfo, ContactInfoAdmin)

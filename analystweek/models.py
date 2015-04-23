@@ -106,11 +106,11 @@ class UserMeeting(models.Model):
 
 	@property
 	def wipro_leaders(self):    
-		return "\n".join([p.get_full_name() for p in self.meeting_with.all()])		
+		return "\n".join([p.get_full_name() for p in self.meeting_of.all()])		
 
 	@property
 	def analysts(self):    
-		return "\n".join([p.get_full_name() for p in self.meeting_of.all()])		
+		return "\n".join([p.get_full_name() for p in self.meeting_with.all()])		
 
 
 	class Meta:
