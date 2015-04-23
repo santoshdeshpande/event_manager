@@ -58,6 +58,7 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 class UserMeetingAdmin(admin.ModelAdmin):
+	list_display = ('wipro_leaders','analysts','start_time','end_time','venue')
 	filter_horizontal = ('meeting_of','meeting_with',)
 	save_as = True	
 

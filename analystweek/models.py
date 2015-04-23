@@ -104,6 +104,15 @@ class UserMeeting(models.Model):
 	def end_time_str(self):
 		return self.end_time.strftime("%I:%M %p")
 
+	@property
+	def wipro_leaders(self):    
+		return "\n".join([p.get_full_name() for p in self.meeting_with.all()])		
+
+	@property
+	def analysts(self):    
+		return "\n".join([p.get_full_name() for p in self.meeting_of.all()])		
+
+
 	class Meta:
 		ordering = ('start_time','modified',)
 
