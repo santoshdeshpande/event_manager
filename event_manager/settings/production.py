@@ -7,7 +7,7 @@ STATIC_ROOT = normpath(join(SITE_ROOT, 'assets'))
 STATIC_URL = '/static/'
 
 
-ALLOWED_HOSTS = ['localhost','aw.eatsleepcode.in']
+ALLOWED_HOSTS = ['localhost','aw.eatsleepcode.in', '23.98.74.210','analystsday.langoorqa.net']
 DATABASES = {
 	'default': {
 	    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
