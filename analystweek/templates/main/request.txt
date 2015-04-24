@@ -1,0 +1,11 @@
+Hi,
+
+A new meeting request was asked for. The details are as below
+
+Name: {{request.name}}
+Company: {{request.company}}
+Designation: {{request.designation}}
+Wipro Leader: {{request.wiproLeader}}
+Comments: {{request.comments}}
+
+Thanks

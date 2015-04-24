@@ -62,27 +62,7 @@ class Survey(models.Model):
 class SurveyAnswers(models.Model):
 	email = models.CharField(max_length = 100)
 	name = models.CharField(max_length = 100)
-	answer1 = models.CharField(max_length=50, null=True,blank=True)
-	answer2 = models.CharField(max_length=50, null=True,blank=True)
-	answer3 = models.CharField(max_length=50, null=True,blank=True)
-	answer4 = models.CharField(max_length=50, null=True,blank=True)
-	answer5 = models.CharField(max_length=50, null=True,blank=True)
-	answer6 = models.CharField(max_length=50, null=True,blank=True)
-	answer7 = models.CharField(max_length=50, null=True,blank=True)
-	answer8 = models.CharField(max_length=50, null=True,blank=True)
-	answer9 = models.CharField(max_length=50, null=True,blank=True)
-	answer10 = models.CharField(max_length=50, null=True,blank=True)
-	answer11 = models.CharField(max_length=50, null=True,blank=True)
-	answer12 = models.CharField(max_length=50, null=True,blank=True)
-	answer13 = models.CharField(max_length=50, null=True,blank=True)
-	answer14 = models.CharField(max_length=50, null=True,blank=True)
-	answer15 = models.CharField(max_length=50, null=True,blank=True)
-	answer16 = models.CharField(max_length=50, null=True,blank=True)
-	answer17 = models.CharField(max_length=50, null=True,blank=True)
-	answer18 = models.CharField(max_length=50, null=True,blank=True)
-	answer19 = models.CharField(max_length=50, null=True,blank=True)
-	answer20 = models.CharField(max_length=50, null=True,blank=True)
-
+	answer1 = models.CharField(max_length=500, null=True,blank=True)
 	class Meta:
 		verbose_name = 'Survey Answer'
 		verbose_name_plural = 'Survey Answers'

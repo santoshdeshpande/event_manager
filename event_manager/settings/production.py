@@ -19,3 +19,5 @@ DATABASES = {
 	    'PORT': '',                      # Set to empty string for default.
 	}
 }
+
+AW_EMAIL_TO = ['mohammed.nawaz2@wipro.com', 'anirban.chakraborty1@wipro.com','reshma.rahi@wipro.com']

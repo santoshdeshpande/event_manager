@@ -3,6 +3,8 @@ from .models import ContactInfo, UserProfile,Agenda,Survey,SurveyAnswers,Meeting
 from django.contrib.auth.models import User
 from django.conf import settings
 
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
 	start = serializers.CharField(source='starting_field')
 	image_url = serializers.SerializerMethodField()

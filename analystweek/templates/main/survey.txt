@@ -1,0 +1,10 @@
+Hi,
+
+A Survey was answered. Here are the contents of the survey answers
+
+Name: {{survey.name}}
+Email: {{survey.email}}
+Answer: {{survey.answer1}}
+
+
+

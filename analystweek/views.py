@@ -9,6 +9,12 @@ from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 
+from django.template import Context
+from django.template.loader import render_to_string, get_template
+from django.core.mail import EmailMessage
+from django.conf import settings
+
+
 class ContactInfoList(generics.ListCreateAPIView):
     queryset = ContactInfo.objects.all()
     serializer_class = ContactInfoSerializer
@@ -37,6 +43,15 @@ class SurveyAnswersList(generics.ListCreateAPIView):
 	serializer_class = SurveyAnswersSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
+	def perform_create(self, serializer):
+		instance = serializer.save()
+		
+		ctx = {
+			'survey': instance
+		}
+		message = render_to_string('main/survey.txt', ctx)
+		email_to = settings.AW_EMAIL_TO
+		EmailMessage("Survey Answer", message, to=email_to, from_email="analystday@langoorqa.net").send()
 
 
 class SurveyList(generics.ListAPIView):	
@@ -64,6 +79,16 @@ class MeetingRequestList(generics.ListCreateAPIView):
 	serializer_class = MeetingRequestSerializer
 	permission_classes = (permissions.IsAuthenticated,)
 
+	def perform_create(self, serializer):
+		instance = serializer.save()
+		ctx = {
+			'request': instance
+		}
+		message = render_to_string('main/request.txt', ctx)
+		email_to = settings.AW_EMAIL_TO
+		EmailMessage("Meeting Request", message, to=email_to, from_email="analystday@langoorqa.net").send()
+
+
 
 class UserInfo(generics.RetrieveAPIView):
 	serializer_class = UserSerializer
@@ -83,6 +108,16 @@ class ChatList(generics.ListCreateAPIView):
 	queryset = Chat.objects.all();
 	serializer_class = ChatSerializer
 	permission_classes = (permissions.IsAuthenticated,)
+
+	def perform_create(self, serializer):
+		instance = serializer.save()
+		ctx = {
+			'chat': instance
+		}
+		message = render_to_string('main/chat.txt', ctx)
+		email_to = settings.AW_EMAIL_TO
+		EmailMessage("Chat Request", message, to=email_to, from_email="analystday@langoorqa.net").send()
+
 
 
 

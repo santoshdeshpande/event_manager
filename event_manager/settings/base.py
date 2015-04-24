@@ -131,3 +131,11 @@ JWT_AUTH = {
 }
 
 AUTH_USER_MODEL = 'analystweek.CustomUser'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST_USER = 'notifications@sidsys.in'
+EMAIL_HOST_PASSWORD = 'notifications'
+EMAIL_PORT = 587
+
+AW_EMAIL_TO = ['santoshdeshpande@gmail.com']

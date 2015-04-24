@@ -1,0 +1,11 @@
+Hi,
+
+A new Chat Message was sent. Here are the details
+
+Email: {{chat.email}}
+Name: {{chat.name}}
+Message: {{chat.message}}
+
+Use the Analyst Day App to send a reply to the message.
+
+Thanks
