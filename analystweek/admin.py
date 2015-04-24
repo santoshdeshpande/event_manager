@@ -19,7 +19,7 @@ class SurveyAdmin(admin.ModelAdmin):
 	list_display = ('question','option1','option2','option3','option4')
 
 class SurveyAnswersAdmin(admin.ModelAdmin):
-	list_display = ('email','name')
+	list_display = ('email','name', 'answer1')
 
 class MeetingAdmin(admin.ModelAdmin):
 	list_display = ('meeting_with_name','table_name','topic','start_time_str','end_time_str')
